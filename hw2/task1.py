@@ -1,12 +1,27 @@
 import math as mth
 
-def expon(x, y):
-    r = (x**2 + y**2) ** 0.5
-    phi = mth.atan(y/x)
-    print(r, '*exp(i*', phi, ')')
+def sum(z1, z2):
+    u = z1._x + z2._x
+    v = z1._y + z2._y
+    return u, v
 
-#def classic(r, phi):
+def raz(z1, z2):
+    u = z1._x - z2._x
+    v = z1._y - z2._y
+    return u, v
 
+def chast(z1, z2):
+    Re_chisl = z1._x*z2._x - z1._y*z2._y
+    Im_chisl = z1._x*z2._y + z2._x*z1._y
+    znam = (z2._x)**2 + (z2._y)**2
+    u = Re_chisl/znam
+    v = Im_chisl/znam
+    return u, v
+
+def pr(z1, z2):
+    u = z1._x*z2._x - z1._y*z2._y
+    v = z1._y*z2._x + z1._x*z2._y
+    return u, v
 
 class Complex_num:
     _x = 0
@@ -21,6 +36,21 @@ class Complex_num:
         self._x = x
         self._y = y
 
-z = Complex_num(2, 4)
-print(z.get())
-print(expon(*z.get()))
+    def expon(self, x, y):
+        r = (x ** 2 + y ** 2) ** 0.5
+        phi = mth.atan(y / x)
+        print(r, '*exp(i*', phi, ')', sep = '')
+
+    def classic(self, x, y):
+            print(x, ' + i*', y, sep = '')
+
+#тесты
+#z = Complex_num(3, 7)
+#q = Complex_num(4, 3)
+#print(z.get())
+#z.expon(*z.get())
+#z.classic(*z.get())
+#print(sum(z, q))
+#print(raz(z, q))
+#print(pr(z, q))
+#print(chast(z, q))
