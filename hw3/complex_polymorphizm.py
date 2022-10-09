@@ -1,9 +1,9 @@
 import math as mth
 
-def sum(z1, z2):
-    u = z1._x + z2._x
-    v = z1._y + z2._y
-    return u, v
+#def sum(z1, z2):
+#   u = z1._x + z2._x
+#  v = z1._y + z2._y
+#   return u, v
 
 def raz(z1, z2):
     u = z1._x - z2._x
@@ -42,6 +42,14 @@ class Complex_num:
         print(r, '*exp(i*', phi, ')', sep = '')
 
     def classic(self, x, y):
-            print(x, ' + i*', y, sep = '')
+        print(x, ' + i*', y, sep = '')
 
-    def sum(self, x, y):
+    def summ(self, other):
+        self._x += other._x
+        self._y += other._y
+        return self
+
+#тесты
+z = Complex_num(4, 6)
+q = Complex_num(5)
+w = summ(z, q)

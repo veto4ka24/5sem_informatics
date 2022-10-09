@@ -46,8 +46,8 @@ class Complex_num:
 
 #тесты
 #z = Complex_num(3, 7)
-#q = Complex_num(4, 3)
-#print(z.get())
+#q = Complex_num(4)
+#print(q.get())
 #z.expon(*z.get())
 #z.classic(*z.get())
 #print(sum(z, q))
