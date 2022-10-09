@@ -43,3 +43,5 @@ class Complex_num:
 
     def classic(self, x, y):
             print(x, ' + i*', y, sep = '')
+
+    def sum(self, x, y):
