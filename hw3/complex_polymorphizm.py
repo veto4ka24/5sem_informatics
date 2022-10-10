@@ -44,7 +44,7 @@ class Complex_num:
     def classic(self, x, y):
         print(x, ' + i*', y, sep = '')
 
-    def summ(self, other):
+    def __add__(self, other):
         self._x += other._x
         self._y += other._y
         return self
@@ -52,4 +52,4 @@ class Complex_num:
 #тесты
 z = Complex_num(4, 6)
 q = Complex_num(5)
-w = summ(z, q)
+w = z + q
