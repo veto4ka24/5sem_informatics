@@ -1,11 +1,6 @@
 import math as mth
 
 def chast(z1, z2):
-    Re_chisl = z1._x*z2._x - z1._y*z2._y
-    Im_chisl = z1._x*z2._y + z2._x*z1._y
-    znam = (z2._x)**2 + (z2._y)**2
-    u = Re_chisl/znam
-    v = Im_chisl/znam
     return u, v
 
 def pr(z1, z2):
@@ -18,15 +13,15 @@ class Complex_num:
     _y = 0
     def __init__(self, x=0, y=0):
         self.set(x, y)
-        if mth.sqrt(self._x ** 2 + self._y ** 2) >= 0:
-            self._r = (x ** 2 + y ** 2) ** 0.5
-            self._phi = mth.atan(y / x)
-        elif mth.sqrt(self._x ** 2 + self._y ** 2) == 0:
-            self._r = 'Представление не однозначно'
-            self._phi = 'Представление не однозначно'
-        else:
+        if mth.sqrt(self._x ** 2 + self._y ** 2) < 0:
             self._r = 'Значение r должно быть больше нуля!'
             self._phi = 'Значение r должно быть больше нуля!'
+        elif mth.sqrt(self._x ** 2 + self._y ** 2) > 0:
+            self._r = (x ** 2 + y ** 2) ** 0.5
+            self._phi = mth.atan(y / x)
+        else:
+            self._r = 'Представление не однозначно'
+            self._phi = 'Представление не однозначно'
 
     def get(self):
         return self._x, self._y
@@ -69,14 +64,61 @@ class Complex_num:
         if type(other) == Complex_num:
             return self._x - other._x, self._y - other._y
 
+    def __mul__(self, other):
+        if type(other) == int or type(other) == float:
+            return self._x * other, self._y * other
+        if type(other) == Complex_num:
+            return self._x * other._x - self._y * other._y, self._x * other._y + self._y * other._x
+
+    def __rmul__(self, other):
+        if type(other) == int or type(other) == float:
+            return self._x * other, self._y * other
+        if type(other) == Complex_num:
+            return self._x * other._x - self._y * other._y, self._x * other._y + self._y * other._x
+
+    def __truediv__(self, other):
+        if type(other) == int or type(other) == float:
+            if other != 0:
+                return self._x / other, self._y / other
+            return str('Делитель должен быть олтичен от нуля!')
+        if type(other) == Complex_num:
+            if other._x != 0 or other._y != 0:
+                Re_chisl = self._x * other._x - self._y * other._y
+                Im_chisl = self._x * other._y + other._x * self._y
+                znam = (other._x) ** 2 + (other._y) ** 2
+                u = Re_chisl / znam
+                v = Im_chisl / znam
+                return u, v
+            return str('Делитель должен быть ненулевой!')
+
+    def __rtruediv__(self, other):
+        if type(other) == int or type(other) == float:
+            if other != 0:
+                return self._x / other, self._y / other
+            return str('Делитель должен быть олтичен от нуля!')
+        if type(other) == Complex_num:
+            if other._x != 0 or other._y != 0:
+                Re_chisl = self._x * other._x - self._y * other._y
+                Im_chisl = self._x * other._y + other._x * self._y
+                znam = (other._x) ** 2 + (other._y) ** 2
+                u = Re_chisl / znam
+                v = Im_chisl / znam
+                return u, v
+            return str('Делитель должен быть ненулевой!')
+
 #тесты
 z = Complex_num(4, 6)
 q = Complex_num(9, 0)
 a = 1
+b = Complex_num()
 print(z.expon())
 w = z + q
 s = a + z
 m = z - q
+p = z/q
+n = q/b
+print(n)
+print(p)
 print(m)
 print(s)
 print(w)
