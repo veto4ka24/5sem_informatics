@@ -63,9 +63,9 @@ class parallelogram(figure):
 
     def area(self):
         if dist(self._point_1, self._point_2) >= dist(self._point_2, self._point_3):
-            S = dist(self._point_1, self._point_2)*self._Normal()
+            S = dist(self._point_1, self._point_2)*self.Normal()
         else:
-            S = dist(self._point_2, self._point_3)*self._Normal()
+            S = dist(self._point_2, self._point_3)*self.Normal()
         return 'Площадь параллелограмма S = ' + str(S)
 
     def perimeter(self):
@@ -75,5 +75,5 @@ a = triangle(point(), point(1, 3), point(2, 1))
 print(a)
 #print(a.perimeter())
 print(a.area())
-b = parallelogram(point, point(2, 5), point(7, 5), point(5, 0))
+b = parallelogram(point(), point(2, 5), point(7, 5), point(5, 0))
 print(b.area())
