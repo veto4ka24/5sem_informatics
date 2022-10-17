@@ -1,10 +1,4 @@
 import math as mth
-
-#def sum(z1, z2):
-#   u = z1._x + z2._x
-#  v = z1._y + z2._y
-#   return u, v
-
 def raz(z1, z2):
     u = z1._x - z2._x
     v = z1._y - z2._y
@@ -37,17 +31,27 @@ class Complex_num:
         self._y = y
 
     def expon(self, x, y):
-        r = (x ** 2 + y ** 2) ** 0.5
-        phi = mth.atan(y / x)
-        print(r, '*exp(i*', phi, ')', sep = '')
+        if mth.sqrt(self._x ** 2 + self._y ** 2) >= 0:
+            self._r = (x ** 2 + y ** 2) ** 0.5
+            self._phi = mth.atan(y / x)
+            return str(self._r + 'e^' + self._phi)
+        if mth.sqrt(self._x ** 2 + self._y ** 2) == 0:
+            self._r = 'Представление не однозначно'
+            self._phi = 'Представление не однозначно'
+            return str(self._r, self._phi)
+        self._r = 'Значение r должно быть больше нуля!'
+        self._phi = 'Значение r должно быть больше нуля!'
+        return str(self._r, self._phi)
 
-    def classic(self, x, y):
-        print(x, ' + i*', y, sep = '')
+
+    def classic(self, r, phi):
+        if mth.sqrt(r)
 
     def __add__(self, other):
-        self._x += other._x
-        self._y += other._y
-        return self
+        if type(other) == int or type(other) == float:
+            return Complex_num(self._a + other, self._b)
+        if type(other) == Complex_num:
+            return Complex_num(self._a + other._a, self._b + other._b)
 
 #тесты
 z = Complex_num(4, 6)
