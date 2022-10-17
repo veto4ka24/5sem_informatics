@@ -1,13 +1,5 @@
 import math as mth
 
-def chast(z1, z2):
-    return u, v
-
-def pr(z1, z2):
-    u = z1._x*z2._x - z1._y*z2._y
-    v = z1._y*z2._x + z1._x*z2._y
-    return u, v
-
 class Complex_num:
     _x = 0
     _y = 0
