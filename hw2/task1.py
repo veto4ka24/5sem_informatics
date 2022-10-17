@@ -28,6 +28,19 @@ class Complex_num:
     _y = 0
     def __init__(self, x=0, y=0):
         self.set(x, y)
+        if mth.sqrt(self._x ** 2 + self._y ** 2) < 0:
+            self._r = 'Значение r должно быть больше нуля!'
+            self._phi = 'Значение r должно быть больше нуля!'
+        elif mth.sqrt(self._x ** 2 + self._y ** 2) > 0:
+            if x != 0:
+                self._r = (x ** 2 + y ** 2) ** 0.5
+                self._phi = mth.atan(y / x)
+            else:
+                self._r = 'Значение угла не определено!'
+                self._phi = 'Значение угла не определено!'
+        else:
+            self._r = 'Представление не однозначно'
+            self._phi = 'Представление не однозначно'
 
     def get(self):
         return self._x, self._y
@@ -36,21 +49,25 @@ class Complex_num:
         self._x = x
         self._y = y
 
-    def expon(self, x, y):
-        r = (x ** 2 + y ** 2) ** 0.5
-        phi = mth.atan(y / x)
-        print(r, '*exp(i*', phi, ')', sep = '')
+    def expon(self):
+        return self._r, self._phi
 
-    def classic(self, x, y):
-            print(x, ' + i*', y, sep = '')
+    def classic(self):
+        if self._r > 0:
+            self._x = self._r*mth.cos(self._phi)
+            self._y = self._r*mth.sin(self._phi)
+            return str(self._x, self._y)
+        return str('Значение r должно быть больше нуля!')
 
 #тесты
-#z = Complex_num(3, 7)
-#q = Complex_num(4)
+z = Complex_num(3, 7)
+q = Complex_num(4)
+m = Complex_num(0, 8)
 #print(q.get())
 #z.expon(*z.get())
 #z.classic(*z.get())
 #print(sum(z, q))
 #print(raz(z, q))
 #print(pr(z, q))
-#print(chast(z, q))
+print(chast(z, q))
+print(chast(z, m))
