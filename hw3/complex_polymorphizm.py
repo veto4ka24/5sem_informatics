@@ -51,5 +51,6 @@ class Complex_num:
 
 #тесты
 z = Complex_num(4, 6)
-q = Complex_num(5)
+q = Complex_num(5, 0)
 w = z + q
+print(w)
