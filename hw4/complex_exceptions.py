@@ -16,8 +16,14 @@ class Complex_num:
         return self._x, self._y
 
     def set(self, x, y):
-        self._x = x
-        self._y = y
+        if int(self._x) == self._x or float(self._x) == self._x:
+            self._x = x
+        else:
+            raise ValueError
+        if int(self._y) == self._y or float(self._y) == self._y:
+            self._y = y
+        else:
+            raise ValueError
 
     def expon(self):
         return self._r, self._phi
@@ -94,22 +100,3 @@ class Complex_num:
                 v = Im_chisl / znam
                 return u, v
             return str('Делитель должен быть ненулевой!')
-
-#тесты
-z = Complex_num(4, 6)
-r = Complex_num()
-print(r.get())
-q = Complex_num(9, 0)
-a = 1
-b = Complex_num()
-print(z.expon())
-w = z + q
-s = a + z
-m = z - q
-p = z/q
-n = q/b
-print(n)
-print(p)
-print(m)
-print(s)
-print(w)
