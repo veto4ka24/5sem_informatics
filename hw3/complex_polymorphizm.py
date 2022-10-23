@@ -95,12 +95,19 @@ class Complex_num:
                 return u, v
             return str('Делитель должен быть ненулевой!')
 
+    def __abs__(self):
+        if type(self) == Complex_num:
+            return ((self._x**2 + self._y**2)**0.5)
+        if (type(self) == int or type(self) == float) and float(self) >= 0:
+            return self
+        return (self*(-1))
+
 #тесты
 z = Complex_num(4, 6)
 r = Complex_num()
 print(r.get())
 q = Complex_num(9, 0)
-a = 1
+a = -1
 b = Complex_num()
 print(z.expon())
 w = z + q
@@ -109,6 +116,8 @@ m = z - q
 p = z/q
 n = q/b
 print(n)
+print(abs(a))
+print(abs(z))
 print(p)
 print(m)
 print(s)

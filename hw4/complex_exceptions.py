@@ -1,5 +1,11 @@
 import math as mth
 
+class MyException:
+    pass
+
+class NotSingleExponentalRepresent(MyException):
+    pass
+
 class Complex_num:
     _x = 0
     _y = 0
@@ -9,8 +15,7 @@ class Complex_num:
             self._r = (x ** 2 + y ** 2) ** 0.5
             self._phi = mth.atan(y / x)
         else:
-            self._r = 'Представление не однозначно'
-            self._phi = 'Представление не однозначно'
+            raise NotSingleExponentalRepresent('Представление в экспоненциальной форме не однозначно!')
 
     def get(self):
         return self._x, self._y
@@ -100,3 +105,22 @@ class Complex_num:
                 v = Im_chisl / znam
                 return u, v
             return str('Делитель должен быть ненулевой!')
+
+#тесты
+z = Complex_num(4, 6)
+r = Complex_num()
+print(r.get())
+q = Complex_num(9, 0)
+a = 1
+b = Complex_num()
+print(z.expon())
+w = z + q
+s = a + z
+m = z - q
+p = z/q
+n = q/b
+print(n)
+print(p)
+print(m)
+print(s)
+print(w)
