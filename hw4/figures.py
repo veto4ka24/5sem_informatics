@@ -1,3 +1,5 @@
+import math as mth
+
 class point:
     def __init__(self, x=0, y=0):
         self._x = x
@@ -120,6 +122,21 @@ class square(rectangle, rhombus):
         P = 4*dist(self._point_1, self._point_2)
         return 'Периметр квадрата P = ' + str(P)
 
+class circle(figure, point):
+    def __init__(self, center, radius, type="circle"):
+        super().__init__(type)
+        self._point_1 = center
+        self._radius = radius
+
+    def area(self):
+        S = mth.pi*(self._radius)**2
+        return 'Площадь круга S = ' + str(S)
+
+    def perimeter(self):
+        P = 2*mth.pi*self._radius
+        return 'Периметр окружности P = ' + str(P)
+
+
 a = triangle(point(), point(1, 3), point(2, 1))
 print(a)
 print(a.perimeter())
@@ -139,3 +156,7 @@ e = square(point(), point(0, 3), point(3, 3), point(3, 0))
 print(e)
 print(e.area())
 print(e.perimeter())
+f = circle(point(), 6)
+print(f)
+print(f.area())
+print(f.perimeter())
