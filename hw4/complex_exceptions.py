@@ -1,9 +1,9 @@
 import math as mth
 
-class MyException:
+class NotSingleExponentalRepresent(Exception):
     pass
 
-class NotSingleExponentalRepresent(MyException):
+class ValueError(Exception):
     pass
 
 class Complex_num:
@@ -11,6 +11,14 @@ class Complex_num:
     _y = 0
     def __init__(self, x=0, y=0):
         self.set(x, y)
+        if type(self._x) == int or type(self._x) == float:
+            self._x = x
+        else:
+            raise ValueError
+        if type(self._y) == int or type(self._y) == float:
+            self._y = y
+        else:
+            raise ValueError
         if mth.sqrt(self._x ** 2 + self._y ** 2) > 0:
             self._r = (x ** 2 + y ** 2) ** 0.5
             self._phi = mth.atan(y / x)
@@ -21,14 +29,8 @@ class Complex_num:
         return self._x, self._y
 
     def set(self, x, y):
-        if int(self._x) == self._x or float(self._x) == self._x:
-            self._x = x
-        else:
-            raise ValueError
-        if int(self._y) == self._y or float(self._y) == self._y:
-            self._y = y
-        else:
-            raise ValueError
+        self._x = x
+        self._y = y
 
     def expon(self):
         return self._r, self._phi
@@ -108,8 +110,8 @@ class Complex_num:
 
 #тесты
 z = Complex_num(4, 6)
-r = Complex_num()
-print(r.get())
+#r = Complex_num()
+#print(r.get())
 q = Complex_num(9, 0)
 a = 1
 b = Complex_num()
@@ -119,8 +121,10 @@ s = a + z
 m = z - q
 p = z/q
 n = q/b
+d = Complex_num('thgvhkg', 'ijkj')
 print(n)
 print(p)
 print(m)
 print(s)
 print(w)
+print(d)
