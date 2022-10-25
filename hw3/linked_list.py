@@ -50,9 +50,14 @@ class List:
         if i < 0 or i >= self._length:
             return False
 
-        curr_pointer = self._start_pointer
-        for j in range(i):
-            curr_pointer = curr_pointer.get_next()
+        if i >= (self._length - i):
+            curr_pointer = self._finish_pointer
+            for k in range(self._length - 1, i, -1):
+                curr_pointer = curr_pointer.get_prev()
+        else:
+            curr_pointer = self._start_pointer
+            for k in range(i):
+                curr_pointer = curr_pointer.get_next()
         return curr_pointer.get_value()
 
     def __str__(self):
